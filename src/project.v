@@ -25,20 +25,27 @@ module tt_um_main (
   // Example of detecting rising clock edge in a process
   // ------------------------------------------------------ //
 
-  // counter bits
-  reg [7:0] counter;
-  
+  // counter bits - set to 0 in beginning
+  reg [7:0] counter = 0;
+
+  // assign counter to output
+  // no need to ever manually assign counter to uo_out
+  assign uo_out = counter;
+
   // this handles incrementation by 1
-  always @(posedge clk) begin
-    // we use <= becuase non-blocking assignment is needed for sequential logic
-    counter <= counter + 1;
+  always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      // we use <= becuase non-blocking assignment is needed for sequential logic
+      // reset counter to 0 on reset
+      counter <= 8'h00;
+
+    end else begin
+      // we use <= becuase non-blocking assignment is needed for sequential logic
+      // increment counter by 1 on each clock cycle
+      counter <= counter + 1; 
+    end
   end
 
-  // this handles resets
-  always @(negedge rst_n) begin
-    // we use <= becuase non-blocking assignment is needed for sequential logic
-    counter <= 0;
-  end
 
 
   // ------------------------------------------------------ //

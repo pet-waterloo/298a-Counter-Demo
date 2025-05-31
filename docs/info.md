@@ -9,12 +9,14 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+The project is designed to simply:
+
+Count a number from 0 -> 2^8 (256) and return it through the output ports.
 
 ## How to test
 
-Explain how to use your project
+To test the project, you can use a simulation tool or run it on the target hardware. The expected behavior is that the output ports will increment from 0 to 255 in binary representation, with each increment visible on the output.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+None. Just have a laptop that runs the python thing.
